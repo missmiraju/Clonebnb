@@ -17,6 +17,20 @@ class MeetupsController < ApplicationController
     end
   end
 
+  def edit
+    @meetup = Meetup.find(params[:id])
+  end
+
+  def update
+    @meetup = Meetup.find(params[:id])
+
+    if @meetup.update(meetup_params)
+      redirect_to meetup_path(@meetup), notice: "Meetup updated successfully."
+    else
+      render :edit
+    end
+  end
+
   private
 
   def meetup_params
