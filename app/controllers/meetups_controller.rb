@@ -11,7 +11,7 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new(meetup_params)
     @meetup.user = current_user
     if @meetup.save
-      redirect_to root_path
+      redirect_to meetup_path(@meetup)
     else
       render :new
     end
@@ -34,7 +34,7 @@ class MeetupsController < ApplicationController
   def destroy
     @meetup = Meetup.find(params[:id])
     @meetup.destroy
-    redirect_to meetups_path, notice: "Meetup deleted successfully."
+    redirect_to root_path, notice: "Meetup deleted successfully."
   end
 
   private
