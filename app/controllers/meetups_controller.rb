@@ -3,6 +3,10 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new
   end
 
+  def show
+    @meetup = meetup.find(params[:id])
+  end
+
   def create
     @meetup = Meetup.new(meetup_params)
     @meetup.user = current_user
