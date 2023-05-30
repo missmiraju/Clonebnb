@@ -3,3 +3,5 @@
 <p><%= @meetup.description %></p>
 
 <%= link_to "Back to all meetups", meetups_path, class: "btn btn-primary" %>
+
+<%= button_to "Delete meetup", meetup_path(@meetup), method: :delete, data: { confirm: "Are you sure you want to delete this meetup?" }, class: "btn btn-danger", remote: true %>
