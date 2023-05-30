@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.form-inputs {
+  width: 400px;
+  height: 300px;
+}
+
+.form-actions {
+  background-color: rgba(148,187,233,1);
+  border-color: rgba(148,187,233,1);
+  border-radius: 10px;
+  width: 100px;
+}
+
+.links {
+  text-align: center;
+}
