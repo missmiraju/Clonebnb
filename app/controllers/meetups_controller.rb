@@ -20,6 +20,6 @@ class MeetupsController < ApplicationController
   private
 
   def meetup_params
-    params.require(:meetup).permit(:date, :description)
+    params.require(:meetup).permit(:date, :description, :title)
   end
 end
