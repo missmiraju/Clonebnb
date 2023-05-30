@@ -4,7 +4,8 @@ class MeetupsController < ApplicationController
   end
 
   def create
-    @meetup = Meetup.new(params[:meetup])
+    @meetup = Meetup.new(meetup_params)
+    @meetup.user = current_user
     if @meetup.save
       redirect_to root_path
     else
