@@ -3,6 +3,10 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new
   end
 
+  def show
+    @meetup = Meetup.find(params[:id])
+  end
+
   def create
     @meetup = Meetup.new(meetup_params)
     @meetup.user = current_user
@@ -13,9 +17,23 @@ class MeetupsController < ApplicationController
     end
   end
 
+  def edit
+    @meetup = Meetup.find(params[:id])
+  end
+
+  def update
+    @meetup = Meetup.find(params[:id])
+
+    if @meetup.update(meetup_params)
+      redirect_to meetup_path(@meetup), notice: "Meetup updated successfully."
+    else
+      render :edit
+    end
+  end
+
   private
 
   def meetup_params
-    params.require(:meetup).permit(:date, :description)
+    params.require(:meetup).permit(:date, :description, :title)
   end
 end
