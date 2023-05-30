@@ -20,8 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_112906) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
     t.string "title"
+    t.integer "price"
     t.index ["user_id"], name: "index_meetups_on_user_id"
   end
 
