@@ -1,2 +1,21 @@
-<h1>this is the index of users</h1>
-<%# gioia this is where the "home page goes, you have a @users (array) instance valiable available to use and iterate over" %>
+<div class="banner">
+  <h1>Welcome to rent a friend 🙋🏻‍♀️</h1>
+  <p>Enjoy your time with your new friends 💜</p>
+</div>
+<div class="cards-container">
+  <% @users.each do |user| %>
+    <% profile_route = #TODO: route to the users#show %>
+    <div class="card">
+      <a href="<%= profile_route %>">
+        <img src="<%= image_path(user.profile_picture_url)%>" class="card-img-top" alt="Card Image">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title"><%= user.username %></h5>
+        <% user.tags.first(@num_tags).each do |tag| %>
+          <p class="card-text"><%= tag.title %></p>
+        <% end %>
+        <a href="<%= profile_route %>" class="btn btn-primary">Visit profile</a>
+      </div>
+    </div>
+  <% end %>
+</div>
