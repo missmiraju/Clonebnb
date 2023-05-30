@@ -11,7 +11,7 @@
       </a>
       <div class="card-body">
         <h5 class="card-title"><%= user.username %></h5>
-        <% user.tags.each do |tag| %>
+        <% user.tags.first(@num_tags).each do |tag| %>
           <p class="card-text"><%= tag.title %></p>
         <% end %>
         <a href="<%= profile_route %>" class="btn btn-primary">Visit profile</a>
