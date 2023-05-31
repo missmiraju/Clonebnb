@@ -1,0 +1,82 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<% full_name = "#{@user.first_name} #{@user.last_name}" %>
+<div class="container" id="white-thing">
+  <div class="card-body custom-card-body">
+    <div class="row">
+      <div class="col-12 col-sm-auto mb-3">
+        <div class="mx-auto" style="width: 140px;">
+          <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+          </div>
+        </div>
+      </div>
+      <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+        <div class="text-left text-sm-left mb-2 mb-sm-0">
+          <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
+          <p class="mb-0"><%= @user.username %></p>
+          <div class="mt-2">
+            <button class="btn btn-primary" type="button">
+              <i class="fa fa-fw fa-camera"></i>
+              <span>Change Photo</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content pt-3">
+      <div class="tab-pane active">
+        <form class="form" novalidate="">
+          <div class="form-group mb-4">
+            <label>Full Name</label>
+            <input class="form-control" type="text" name="name" placeholder="John Smith" value= "<%= full_name %>">
+          </div>
+          <div class="form-group mb-4">
+            <label>Username</label>
+            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="<%= @user.username %>">
+          </div>
+          <div class="form-group mb-4">
+            <label>Email</label>
+            <input class="form-control" type="text" placeholder="user@example.com" value= "<%= @user.email %>">
+          </div>
+          <div class="form-group mb-4">
+            <label>About</label>
+            <textarea class="form-control" rows="5" placeholder="My Bio"><%= @user.description %></textarea>
+          </div>
+          <div class="meetup-card">
+            <h5>May 31</h5>
+            <p>Amateur soccer game in Tiefenbrunnen.</p>
+          </div>
+          <div class="meetup-card">
+            <h5>June 15</h5>
+            <p>Play Pokemon Go in Zurich.</p>
+          </div>
+          <div class="form-group mb-4">
+            <label>Interest tags</label>
+            <div class="custom-controls-stacked px-2 interest-tags">
+              <div class="interest-tag">
+                <input type="checkbox" class="custom-control-input" id="interest-dancing" checked="">
+                <label class="custom-control-label" for="interest-dancing">Dancing</label>
+              </div>
+              <div class="interest-tag">
+                <input type="checkbox" class="custom-control-input" id="interest-photography" checked="">
+                <label class="custom-control-label" for="interest-photography">Photography</label>
+              </div>
+              <div class="interest-tag">
+                <input type="checkbox" class="custom-control-input" id="interest-sci-fi" checked="">
+                <label class="custom-control-label" for="interest-sci-fi">Sci-Fi</label>
+              </div>
+              <div class="interest-tag">
+                <input type="checkbox" class="custom-control-input" id="interest-salami" checked="">
+                <label class="custom-control-label" for="interest-salami">Salami</label>
+              </div>
+              <!-- add more interest tags here -->
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
