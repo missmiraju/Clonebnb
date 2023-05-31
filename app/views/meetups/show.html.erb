@@ -1,27 +1,29 @@
-<div class="container">
-  <div class="header">
-    <h2>Your new meetup 🎉</h2>
-  </div>
-  <p>Title</p>
-  <div class="input">
-    <p><%= @meetup.title %></p>
-  </div>
-  <p>Date</p>
-  <div class="input">
-    <p><%= @meetup.date %></p>
-  </div>
-  <p>Description</p>
-  <div id="description">
-    <p><%= @meetup.description %></p>
-  </div>
-  <div class="links">
-    <%= link_to "Back to all meetups", meetups_path, class: "btn btn-primary" %>
-    <% if policy(@meetup).edit? %>
-      <%= link_to "Edit this meetp", edit_meetup_path(@meetup), class: "btn btn-secondary" %>
-    <% end %>
-<!--     <% if policy(@meetup).destroy? %>
-      <%= link_to "Delete meetup", meetup_path(@meetup), method: :delete, data: { confirm: "Are you sure you want to delete this meetup?" }, class: "btn_delete", remote: true %>
-    <% end %> -->
+<div class="container-meetup-show">
+  <div>
+    <div class="header">
+      <h2>Your new meetup 🎉</h2>
+    </div>
+    <p>Title</p>
+    <div class="input">
+      <p><%= @meetup.title %></p>
+    </div>
+    <p>Date</p>
+    <div class="input">
+      <p><%= @meetup.date %></p>
+    </div>
+    <p>Description</p>
+    <div id="description">
+      <p><%= @meetup.description %></p>
+    </div>
+    <div class="links">
+      <%= link_to "Back to all meetups", meetups_path, class: "btn btn-primary" %>
+      <% if policy(@meetup).edit? %>
+        <%= link_to "Edit this meetp", edit_meetup_path(@meetup), class: "btn btn-secondary" %>
+      <% end %>
+  <!--     <% if policy(@meetup).destroy? %>
+        <%= link_to "Delete meetup", meetup_path(@meetup), method: :delete, data: { confirm: "Are you sure you want to delete this meetup?" }, class: "btn_delete", remote: true %>
+      <% end %> -->
+    </div>
   </div>
 </div>
 
