@@ -1,0 +1,14 @@
+form {
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px 25px;
+}
+.simple_form.new_user {
+  width: 40%;
+}
+.form-actions [type="submit"] {
+  background-color: rgba(148,187,233,1);
+  border-color: rgba(148,187,233,1);
+  border-radius: 10px;
+  padding: 7px 25px;
+}
