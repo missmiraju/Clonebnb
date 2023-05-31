@@ -1,15 +1,18 @@
 class MeetupsController < ApplicationController
   def new
     @meetup = Meetup.new
+    authorize @meetup
   end
 
   def show
     @meetup = Meetup.find(params[:id])
+    authorize @meetup
   end
 
   def create
     @meetup = Meetup.new(meetup_params)
     @meetup.user = current_user
+    authorize @meetup
     if @meetup.save
       redirect_to meetup_path(@meetup)
     else
@@ -19,10 +22,12 @@ class MeetupsController < ApplicationController
 
   def edit
     @meetup = Meetup.find(params[:id])
+    authorize @meetup
   end
 
   def update
     @meetup = Meetup.find(params[:id])
+    authorize @meetup
 
     if @meetup.update(meetup_params)
       redirect_to meetup_path(@meetup), notice: "Meetup updated successfully."
@@ -33,6 +38,7 @@ class MeetupsController < ApplicationController
 
   def destroy
     @meetup = Meetup.find(params[:id])
+    authorize @meetup
     @meetup.destroy
     redirect_to root_path, notice: "Meetup deleted successfully."
   end
