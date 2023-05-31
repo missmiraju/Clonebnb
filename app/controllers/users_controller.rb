@@ -4,4 +4,8 @@ class UsersController < ApplicationController
     @users = policy_scope(User)
     @num_tags = 3 # define how many tags should be displayed on the initial page
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end
