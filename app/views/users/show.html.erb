@@ -1,4 +1,5 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<% full_name = "#{@user.first_name} #{@user.last_name}" %>
 <div class="container" id="white-thing">
   <div class="card-body custom-card-body">
     <div class="row">
@@ -10,9 +11,9 @@
         </div>
       </div>
       <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-        <div class="text-center text-sm-left mb-2 mb-sm-0">
-          <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-          <p class="mb-0">@johnny.s</p>
+        <div class="text-left text-sm-left mb-2 mb-sm-0">
+          <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
+          <p class="mb-0"><%= @user.username %></p>
           <div class="mt-2">
             <button class="btn btn-primary" type="button">
               <i class="fa fa-fw fa-camera"></i>
@@ -25,23 +26,31 @@
     <div class="tab-content pt-3">
       <div class="tab-pane active">
         <form class="form" novalidate="">
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label>Full Name</label>
-            <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+            <input class="form-control" type="text" name="name" placeholder="John Smith" value= "<%= full_name %>">
           </div>
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label>Username</label>
-            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="<%= @user.username %>">
           </div>
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label>Email</label>
-            <input class="form-control" type="text" placeholder="user@example.com">
+            <input class="form-control" type="text" placeholder="user@example.com" value= "<%= @user.email %>">
           </div>
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label>About</label>
-            <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+            <textarea class="form-control" rows="5" placeholder="My Bio"><%= @user.description %></textarea>
           </div>
-          <div class="form-group">
+          <div class="meetup-card">
+            <h5>May 31</h5>
+            <p>Amateur soccer game in Tiefenbrunnen.</p>
+          </div>
+          <div class="meetup-card">
+            <h5>June 15</h5>
+            <p>Play Pokemon Go in Zurich.</p>
+          </div>
+          <div class="form-group mb-4">
             <label>Interest tags</label>
             <div class="custom-controls-stacked px-2 interest-tags">
               <div class="interest-tag">
@@ -61,28 +70,6 @@
                 <label class="custom-control-label" for="interest-salami">Salami</label>
               </div>
               <!-- add more interest tags here -->
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Meetups</label>
-            <div class="custom-controls-stacked px-2 meetups">
-              <div class="meetup">
-                <input type="checkbox" class="custom-control-input" id="meetup-sports" checked="">
-                <label class="custom-control-label" for="meetup-sports">Sports</label>
-              </div>
-              <div class="meetup">
-                <input type="checkbox" class="custom-control-input" id="meetup-cooking" checked="">
-                <label class="custom-control-label" for="meetup-cooking">Cooking</label>
-              </div>
-              <div class="meetup">
-                <input type="checkbox" class="custom-control-input" id="meetup-movies" checked="">
-                <label class="custom-control-label" for="meetup-movies">Movies</label>
-              </div>
-              <div class="meetup">
-                <input type="checkbox" class="custom-control-input" id="meetup-travel" checked="">
-                <label class="custom-control-label" for="meetup-travel">Travel</label>
-              </div>
-              <!-- add more meetup options here -->
             </div>
           </div>
           <div class="d-flex justify-content-end">
