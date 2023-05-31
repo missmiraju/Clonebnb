@@ -1,0 +1,64 @@
+#white-thing {
+  margin-top: 20px;
+  width: 500px;
+  background: #f8f8f8;
+}
+
+.custom-card-body {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: -4px;
+}
+
+.interest-tags .interest-tag {
+  display: flex;
+  align-items: center;
+  margin: 4px;
+}
+
+.interest-tags .interest-tag .custom-control-input {
+  display: none;
+}
+
+.interest-tags .interest-tag .custom-control-label {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff4f82;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.interest-tags .interest-tag .custom-control-label::before {
+  content: '\f00c';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  font-family: FontAwesome;
+  font-size: 12px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.interest-tags .interest-tag .custom-control-input:checked + .custom-control-label {
+  background-color: #00bcd4;
+}
+
+.interest-tags .interest-tag .custom-control-input:checked + .custom-control-label::before {
+  content: '\f00c';
+}
+
+.interest-tags .interest-tag .custom-control-input:focus + .custom-control-label {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
