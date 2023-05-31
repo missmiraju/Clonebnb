@@ -13,7 +13,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
-  margin: -4px;
+  margin-top: 5px;
 }
 
 .interest-tags .interest-tag {
@@ -40,7 +40,7 @@
 }
 
 .interest-tags .interest-tag .custom-control-label::before {
-  content: '\f00c';
+  // content: '\f00c';
   position: absolute;
   top: 50%;
   left: 8px;
@@ -56,9 +56,30 @@
 }
 
 .interest-tags .interest-tag .custom-control-input:checked + .custom-control-label::before {
-  content: '\f00c';
+  // content: '\f00c';
 }
 
 .interest-tags .interest-tag .custom-control-input:focus + .custom-control-label {
   box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+.meetup-card {
+  border: 1px solid #ccc;
+  background-color:#cadaec;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.interest-tags {
+  margin-top: 5px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: transparent;
+  background-color: transparent;
 }
