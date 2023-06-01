@@ -34,6 +34,7 @@
               <p><%= meetup.description %></p>
               <% if policy(meetup).edit? %>
                 <%= link_to "Edit", edit_meetup_path(meetup) %>
+                <%= link_to "Display Meetup", meetup_path(meetup) %>
               <% else %>
                 <%= link_to "Book" %>
               <% end %>
