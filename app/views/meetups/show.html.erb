@@ -16,9 +16,9 @@
       <p><%= @meetup.description %></p>
     </div>
     <div class="links">
-      <%= link_to "Back to all meetups", meetups_path, class: "btn btn-primary" %>
+      <%= link_to "Back to meetups", root_path, class: "btn btn-primary", id: "back-button-space" %>
       <% if policy(@meetup).edit? %>
-        <%= link_to "Edit this meetp", edit_meetup_path(@meetup), class: "btn btn-secondary" %>
+        <%= link_to "Edit", edit_meetup_path(@meetup), class: "btn btn-primary" %>
       <% end %>
   <!--     <% if policy(@meetup).destroy? %>
         <%= link_to "Delete meetup", meetup_path(@meetup), method: :delete, data: { confirm: "Are you sure you want to delete this meetup?" }, class: "btn_delete", remote: true %>
@@ -26,5 +26,3 @@
     </div>
   </div>
 </div>
-
-

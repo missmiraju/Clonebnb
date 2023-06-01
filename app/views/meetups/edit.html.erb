@@ -1,23 +1,24 @@
-<h1>Edit Meetup</h1>
-<%= link_to "Back to meetups", meetups_path %>
+<div class="header">
+  <h1>Edit Meetup</h1>
+</div>
 
-<%= form_for @meetup, url: meetup_path(@meetup), method: :patch do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div class="container">
+  <%= simple_form_for @meetup, url: meetup_path(@meetup), method: :patch do |f| %>
+    <div class="form-group">
+      <%= f.input :title, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= f.label :date %>
-    <%= f.date_select :date %>
-  </div>
+    <div class="form-group">
+      <%= f.input :date, as: :datetime, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+    <div class="form-group">
+      <%= f.input :description, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= f.submit "Update Meetup" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= link_to "Back to meetups", root_path, class: "btn btn-primary" %>
+      <%= f.submit "Update Meetup", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
