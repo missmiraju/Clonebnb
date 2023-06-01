@@ -4,18 +4,17 @@
 </div>
 <div class="cards-container">
   <% @users.each do |user| %>
-    <% profile_route = #TODO: route to the users#show %>
     <div class="card">
-      <a href="<%= profile_route %>">
-        <% picture_url = user.profile_picture_url.nil? ? "dummy.jpeg" : user.profile_picture_url %>
-        <img src="<%= image_path(picture_url)%>" class="card-img-top" alt="Card Image">
-      </a>
+      <%= link_to "#" do  %>
+        <%= cl_image_tag user.photo.key, class: "card-img-top" if user.photo.attached? %>
+        <%= image_tag "https://www.shutterstock.com/image-photo/profile-side-photo-young-handsome-260nw-1909369393.jpg", class: "card-img-top" unless user.photo.attached? %>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= user.username %></h5>
         <% user.tags.first(@num_tags).each do |tag| %>
           <p class="card-text"><%= tag.title %></p>
         <% end %>
-        <a href="<%= profile_route %>" class="btn btn-primary">Visit profile</a>
+        <%= link_to "Visit profile", "#" %>
       </div>
     </div>
   <% end %>
