@@ -3,7 +3,7 @@
   <p>Enjoy your time with your new friends 💜</p>
 </div>
 <div class="cards-container">
-  <% @users.each do |user| %>
+  <% @users_with.each do |user| %>
     <div class="card">
       <%= link_to user_path(user) do  %>
         <%= cl_image_tag user.photo.key, class: "card-img-top" if user.photo.attached? %>

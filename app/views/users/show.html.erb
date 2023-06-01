@@ -7,7 +7,7 @@
         <div class="mx-auto">
           <div id="profile-image" class="d-flex justify-content-center align-items-center rounded">
             <%= cl_image_tag @user.photo.key, class: "card-img-top" if @user.photo.attached? %>
-            <%= image_tag "https://www.shutterstock.com/image-photo/profile-side-photo-young-handsome-260nw-1909369393.jpg", class: "card-img-top" unless @user.photo.attached? %>
+            <%= image_tag image_path("dummy.jpeg"), class: "card-img-top" unless @user.photo.attached? %>
           </div>
         </div>
       </div>
@@ -15,13 +15,6 @@
         <div class="text-left text-sm-left mb-2 mb-sm-0">
           <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
           <p class="mb-0"><%= @user.username %></p>
-          <div class="mt-2">
-            <button class="btn btn-primary" type="button" onclick="document.getElementById('photo-upload').click()">
-              <i class="fa fa-fw fa-camera"></i>
-              <span>Change Photo</span>
-            </button>
-            <input type="file" id="photo-upload" style="display: none;" accept="image/*" onchange="previewImage(event)">
-          </div>
         </div>
       </div>
     </div>
