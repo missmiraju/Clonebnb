@@ -7,8 +7,7 @@
     <% profile_route = #TODO: route to the users#show %>
     <div class="card">
       <a href="<%= profile_route %>">
-        <% picture_url = user.profile_picture_url.nil? ? "dummy.jpeg" : user.profile_picture_url %>
-        <img src="<%= image_path(picture_url)%>" class="card-img-top" alt="Card Image">
+        <img src="<%= image_path(user.profile_picture_url)%>" class="card-img-top" alt="Card Image">
       </a>
       <div class="card-body">
         <h5 class="card-title"><%= user.username %></h5>

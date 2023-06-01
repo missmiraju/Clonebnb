@@ -4,9 +4,9 @@
   <div class="card-body custom-card-body">
     <div class="row">
       <div class="col-12 col-sm-auto mb-3">
-        <div class="mx-auto" style="width: 140px;">
-          <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+        <div class="mx-auto">
+          <div id="profile-image" class="d-flex justify-content-center align-items-center rounded">
+            <img id="preview-image" src="path/to/default/image.jpg" alt="Profile Image">
           </div>
         </div>
       </div>
@@ -15,10 +15,11 @@
           <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
           <p class="mb-0"><%= @user.username %></p>
           <div class="mt-2">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="button" onclick="document.getElementById('photo-upload').click()">
               <i class="fa fa-fw fa-camera"></i>
               <span>Change Photo</span>
             </button>
+            <input type="file" id="photo-upload" style="display: none;" accept="image/*" onchange="previewImage(event)">
           </div>
         </div>
       </div>
@@ -80,3 +81,15 @@
     </div>
   </div>
 </div>
+<script>
+  function previewImage(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('preview-image').src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
