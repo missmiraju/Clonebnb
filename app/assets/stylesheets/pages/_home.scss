@@ -43,6 +43,8 @@
 }
 // button visit profile
 .btn-primary {
+  display: flex;
+  align-items: center;
   background-color: rgba(148,187,233,1);
   border-color: rgba(148,187,233,1);
   border-radius: 10px;
