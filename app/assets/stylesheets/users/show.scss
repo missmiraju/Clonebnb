@@ -26,6 +26,18 @@
   display: none;
 }
 
+.interest-tags .interest-tag .olis-interest-tag {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #00bcd4;
+  border-radius: 16px;
+  transition: background-color 0.3s;
+}
+
 .interest-tags .interest-tag .custom-control-label {
   position: relative;
   display: inline-block;

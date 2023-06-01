@@ -1,12 +1,13 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <% full_name = "#{@user.first_name} #{@user.last_name}" %>
+
 <div class="container" id="white-thing">
   <div class="card-body custom-card-body">
     <div class="row">
       <div class="col-12 col-sm-auto mb-3">
         <div class="mx-auto">
           <div id="profile-image" class="d-flex justify-content-center align-items-center rounded">
-            <img id="preview-image" src="path/to/default/image.jpg" alt="Profile Image">
+            <%= cl_image_tag @user.photo.key, class: "card-img-top" if @user.photo.attached? %>
+            <%= image_tag "https://www.shutterstock.com/image-photo/profile-side-photo-young-handsome-260nw-1909369393.jpg", class: "card-img-top" unless @user.photo.attached? %>
           </div>
         </div>
       </div>
@@ -28,54 +29,36 @@
       <div class="tab-pane active">
         <form class="form" novalidate="">
           <div class="form-group mb-4">
-            <label>Full Name</label>
-            <input class="form-control" type="text" name="name" placeholder="John Smith" value= "<%= full_name %>">
-          </div>
-          <div class="form-group mb-4">
-            <label>Username</label>
-            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="<%= @user.username %>">
-          </div>
-          <div class="form-group mb-4">
-            <label>Email</label>
-            <input class="form-control" type="text" placeholder="user@example.com" value= "<%= @user.email %>">
-          </div>
-          <div class="form-group mb-4">
             <label>About</label>
-            <textarea class="form-control" rows="5" placeholder="My Bio"><%= @user.description %></textarea>
+            <span class="form-control" placeholder="My Bio"><%= @user.description %></span>
           </div>
-          <div class="meetup-card">
-            <h5>May 31</h5>
-            <p>Amateur soccer game in Tiefenbrunnen.</p>
-          </div>
-          <div class="meetup-card">
-            <h5>June 15</h5>
-            <p>Play Pokemon Go in Zurich.</p>
-          </div>
+
+          <%# meetups %>
+          <% @meetups.each do |meetup| %>
+            <div class="meetup-card">
+              <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}" %>
+              <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
+              <p><%= meetup.description %></p>
+              <% if policy(meetup).edit? %>
+                <%= link_to "Edit", edit_meetup_path(meetup) %>
+              <% else %>
+                <%= link_to "Book" %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <%# interests %>
           <div class="form-group mb-4">
             <label>Interest tags</label>
             <div class="custom-controls-stacked px-2 interest-tags">
-              <div class="interest-tag">
-                <input type="checkbox" class="custom-control-input" id="interest-dancing" checked="">
-                <label class="custom-control-label" for="interest-dancing">Dancing</label>
-              </div>
-              <div class="interest-tag">
-                <input type="checkbox" class="custom-control-input" id="interest-photography" checked="">
-                <label class="custom-control-label" for="interest-photography">Photography</label>
-              </div>
-              <div class="interest-tag">
-                <input type="checkbox" class="custom-control-input" id="interest-sci-fi" checked="">
-                <label class="custom-control-label" for="interest-sci-fi">Sci-Fi</label>
-              </div>
-              <div class="interest-tag">
-                <input type="checkbox" class="custom-control-input" id="interest-salami" checked="">
-                <label class="custom-control-label" for="interest-salami">Salami</label>
-              </div>
-              <!-- add more interest tags here -->
+              <% @utags.each do |utag| %>
+                <div class="interest-tag">
+                  <p class="olis-interest-tag" ><%= utag.tag.title %></p>
+                </div>
+              <% end %>
             </div>
           </div>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-primary" type="submit">Save Changes</button>
-          </div>
+
         </form>
       </div>
     </div>
