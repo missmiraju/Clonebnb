@@ -1,10 +1,12 @@
 .container-meetup-show {
-  display: flex;
-  justify-content: center;
   background-color: white;
-  padding: 25px;
-  width: 400px;
+  display: block;
+  border-radius: 20px;
+  padding: 25px 25px;
+  max-width: 400px;
+  margin: 0 auto; /* center the container horizontally */
 }
+
 
 .container-meetup-show p {
   margin-bottom: 0;
@@ -13,8 +15,8 @@
 .input {
   height: 50px;
   width: auto;
-  border: 1px solid lightgrey;
-  background-color: lightgrey;
+  border: 1px solid rgb(240, 240, 240);
+  background-color: rgb(240, 240, 240);
   border-radius: 10px;
   padding: 5px;
   padding-top: 12px;
@@ -24,8 +26,8 @@
 #description {
   height: 100px;
   width: auto;
-  border: 1px solid lightgrey;
-  background-color: lightgrey;
+  border: 1px solid rgb(240, 240, 240);
+  background-color: rgb(240, 240, 240);
   border-radius: 10px;
   padding: 5px;
   padding-top: 12px;
@@ -33,9 +35,13 @@
 }
 
 .links {
-  display: inline-flex;
+  display: flex;//inline-flex;
   justify-content: space-between;
   margin-top: 20px;
+}
+
+#back-button-space {
+  margin-right: 10px;
 }
 
 .btn_delete {
