@@ -4,6 +4,15 @@ class MeetupsController < ApplicationController
     authorize @meetup
   end
 
+  def index
+    @users = User.all
+    @meetups = if params[:search]
+                 Meetup.where("title LIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+               else
+                 Meetup.all
+               end
+  end
+
   def show
     @meetup = Meetup.find(params[:id])
     authorize @meetup
