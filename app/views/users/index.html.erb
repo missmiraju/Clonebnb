@@ -1,14 +1,17 @@
 <div class="banner">
-  <h1>Welcome to rent a friend 🙋🏻‍♀️</h1>
-  <p>Enjoy your time with your new friends 💜</p>
+  <h1>Meet your new best friend!</h1>
+
+  <div class="searchbox-container">
+    <div class="SearchBox">
+      <input type="text" class="SearchBox-input" placeholder="Search meetups...">
+      <button class="SearchBox-button">
+        <i class="SearchBox-icon material-icons">search</i>
+      </button>
+    </div>
+  </div>
 </div>
 
-<div class="search-bar">
-  <%= form_with(url: root_path, method: :get) do |form| %>
-    <%= form.text_field :search, placeholder: "Search meetups..." %>
-    <%= form.submit "Search" %>
-  <% end %>
-</div>
+
 <div class="cards-container">
   <% @users_with.each do |user| %>
     <div class="card">
@@ -16,11 +19,11 @@
         <%= cl_image_tag user.photo.key, class: "card-img-top" if user.photo.attached? %>
         <%= image_tag image_path("dummy.jpeg"), class: "card-img-top" unless user.photo.attached? %>
       <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= user.username %></h5>
-        <% user.tags.first(@num_tags).each do |tag| %>
-          <p class="card-text"><%= tag.title %></p>
-        <% end %>
+      <div class="card-body" style="background-color: rgba(245, 2, 87, 0.1);">
+  <h5 class="card-title"><%= user.username %></h5>
+  <% user.tags.first(@num_tags).each do |tag| %>
+    <p class="card-text"><%= tag.title %></p>
+  <% end %>
 
         <%# Meetups %>
         <% user.meetups.each do |meetup| %>
