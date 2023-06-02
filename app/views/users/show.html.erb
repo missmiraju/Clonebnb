@@ -16,7 +16,7 @@
           <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
           <p class="mb-0"><%= @user.username %></p>
           <% if @user == current_user %>
-            <%= link_to "Edit my Profile", edit_user_registration_path %>
+            <%= link_to "Edit my Profile", edit_user_registration_path, class:"btn btn-profile" %>
           <% end %>
         </div>
       </div>
@@ -29,22 +29,7 @@
             <span class="form-control" placeholder="My Bio"><%= @user.description %></span>
           </div>
 
-          <%# meetups %>
-          <% @meetups.each do |meetup| %>
-            <div class="meetup-card">
-              <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}" %>
-              <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
-              <p><%= meetup.description %></p>
-              <% if policy(meetup).edit? %>
-                <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
-                <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
-              <% else %>
-                <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
-              <% end %>
-            </div>
-          <% end %>
-
-          <%# interests %>
+                    <%# interests %>
           <div class="form-group mb-4">
             <label>Interest tags</label>
             <div class="custom-controls-stacked px-2 interest-tags">
@@ -59,7 +44,22 @@
         </form>
       </div>
     </div>
-    <% if @user = current_user %>
+    <%# meetups %>
+    <% @meetups.each do |meetup| %>
+      <div class="meetup-card">
+        <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}" %>
+        <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
+        <p><%= meetup.description %></p>
+        <% if policy(meetup).edit? %>
+          <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
+          <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
+        <% else %>
+          <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @user == current_user %>
       <%# my booked meetups %>
       <div>
         <% @bookings.each do |booking| %>

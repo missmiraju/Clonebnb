@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_153831) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "meetup_id", null: false # in here is the friend
-    t.bigint "user_id", null: false # this is the visitor
+    t.bigint "meetup_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
