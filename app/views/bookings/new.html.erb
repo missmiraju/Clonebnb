@@ -8,7 +8,7 @@
   <%= f.input :meetup_id, as: :hidden, input_html: { value: @meetup.id } %>
 
   <div class="form-group">
-    <%= f.submit "Yes", class: "btn btn-primary" %>
+    <%= f.submit "Yes", class: "btn btn-profile" %>
   </div>
-  <%= link_to "No", user_path(@meetup.user) %>
+<%= link_to "No", user_path(@meetup.user), class: "btn btn-profile" %>
 <% end %>
