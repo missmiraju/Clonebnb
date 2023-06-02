@@ -17,5 +17,6 @@ class UsersController < ApplicationController
     @months = MONTHS
     @current_year = Date.today.year.to_i
     @utags = @user.user_tags
+    @bookings = @user.bookings
   end
 end

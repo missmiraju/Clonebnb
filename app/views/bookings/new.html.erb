@@ -1,0 +1,14 @@
+<% year = @meetup.date.year.to_i == @current_year ? "" : ", #{@meetup.date.year}"  %>
+
+<h1>Do you want to make a booking for <%= @meetup.title %>?</h1>
+<h3>Date: <%= @months[@meetup.date.month.to_i - 1] %> <%= @meetup.date.day %><%= year %></h3>
+<p><%= @meetup.description %></p>
+
+<%= simple_form_for @booking, url: bookings_path, method: :post do |f| %>
+  <%= f.input :meetup_id, as: :hidden, input_html: { value: @meetup.id } %>
+
+  <div class="form-group">
+    <%= f.submit "Yes", class: "btn btn-primary" %>
+  </div>
+  <%= link_to "No", user_path(@meetup.user) %>
+<% end %>

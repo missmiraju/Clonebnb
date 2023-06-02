@@ -16,6 +16,7 @@ class MeetupsController < ApplicationController
   def show
     @meetup = Meetup.find(params[:id])
     authorize @meetup
+    @bookings = @meetup.bookings
   end
 
   def create
