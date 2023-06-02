@@ -28,11 +28,13 @@ class BookingsController < ApplicationController
     end
   end
 
-  # def destroy
-  # end
-
-  # def edit
-  # end
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    meetup = @booking.meetup
+    @booking.destroy
+    redirect_to user_path(meetup.user), notice: "Booking deleted successfully."
+  end
 
   def update
     @booking = Booking.find(params[:id])

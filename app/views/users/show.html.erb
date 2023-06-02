@@ -29,7 +29,28 @@
             <span class="form-control" placeholder="My Bio"><%= @user.description %></span>
           </div>
 
-                    <%# interests %>
+          <%# meetups %>
+          <% @meetups.each do |meetup| %>
+            <div class="meetup-card">
+              <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}" %>
+              <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
+              <p><%= meetup.description %></p>
+              <% if policy(meetup).edit? %>
+                <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
+                <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
+              <% else %>
+                <% bookings = meetup.bookings %>
+                <% if bookings.map { |booking| booking.user }.include?(current_user) %>
+                  <%# <%= link_to "Unbook", new_booking_path(meetup), class:"btn btn-profile" %>
+                  <%= link_to "Unbook", booking_path(bookings.find { |booking| booking.user == current_user } ), data: { turbo_method: :delete, confirm: "Are you sure you want to cancel this Booking?" }, class: "btn btn-primary", remote: true %>
+                <% else %>
+                  <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <%# interests %>
           <div class="form-group mb-4">
             <label>Interest tags</label>
             <div class="custom-controls-stacked px-2 interest-tags">
@@ -44,28 +65,15 @@
         </form>
       </div>
     </div>
-    <%# meetups %>
-    <% @meetups.each do |meetup| %>
-      <div class="meetup-card">
-        <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}" %>
-        <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
-        <p><%= meetup.description %></p>
-        <% if policy(meetup).edit? %>
-          <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
-          <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
-        <% else %>
-          <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
-        <% end %>
-      </div>
-    <% end %>
-
     <% if @user == current_user %>
       <%# my booked meetups %>
       <div>
         <% @bookings.each do |booking| %>
-          <% accept_text = "#{booking.meetup.user.username} has accepted!" %>
-          <% wait_text = "Waiting for #{booking.meetup.user.username} to accept" %>
-          <p><%= booking.accepted? ? accept_text : wait_text %></p>
+          <% if booking.accepted? %>
+            <p><%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> has accepted!</p>
+          <% else %>
+            <p>Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> to accept</p>
+          <% end %>
         <% end %>
       </div>
     <% end %>

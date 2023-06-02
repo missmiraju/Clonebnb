@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   resources :meetups, only: [ :new, :create, :show, :edit, :update, :destroy, :index ]
   resources :users, only: [ :show ]
-  resources :bookings, only: [ :create, :destroy, :edit, :update, :show]
+  resources :bookings, only: [ :create, :destroy, :update, :show]
   get "meetups/:meetup_id/booking/new", to: "bookings#new", as: :new_booking
 end

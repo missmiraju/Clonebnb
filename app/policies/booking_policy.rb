@@ -23,6 +23,6 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.meetup.user == user
+    record.user == user
   end
 end

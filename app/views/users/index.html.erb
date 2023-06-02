@@ -21,7 +21,15 @@
         <% user.tags.first(@num_tags).each do |tag| %>
           <p class="card-text"><%= tag.title %></p>
         <% end %>
-        <!-- <%= link_to "Visit profile", user_path(user) %> -->
+
+        <%# Meetups %>
+        <% user.meetups.each do |meetup| %>
+          <div>
+            <% year = meetup.date.year.to_i == @current_year ? "" : ", #{meetup.date.year}"  %>
+            <% link_text = "#{meetup.title} on #{@months[meetup.date.month.to_i - 1]} #{meetup.date.day}#{year}" %>
+            <%= link_to link_text, user_path(user), class: "btn" %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
