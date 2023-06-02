@@ -112,3 +112,20 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .btn-profile {
+    display: inline-flex; /* Use inline-flex instead of flex */
+    align-items: center;
+    background-color: rgba(148, 187, 233, 1);
+    border-color: rgba(148, 187, 233, 1);
+    border-radius: 10px;
+    max-width: 100px;
+    justify-content: center;
+    margin-bottom: 2px;
+    margin-right: 5px; /* Add some right margin for spacing between buttons */
+  }
+
+  .btn-profile:hover {
+    background-color: rgba(238,174,202,1);
+    border-color: rgba(238,174,202,1);
+  }
