@@ -15,6 +15,9 @@
         <div class="text-left text-sm-left mb-2 mb-sm-0">
           <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= full_name %></h4>
           <p class="mb-0"><%= @user.username %></p>
+          <% if @user == current_user %>
+            <%= link_to "Edit my Profile", edit_user_registration_path %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -36,7 +39,7 @@
                 <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
                 <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
               <% else %>
-                <%= link_to "Book", class:"btn btn-profile" %>
+                <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
               <% end %>
             </div>
           <% end %>
@@ -56,6 +59,16 @@
         </form>
       </div>
     </div>
+    <% if @user = current_user %>
+      <%# my booked meetups %>
+      <div>
+        <% @bookings.each do |booking| %>
+          <% accept_text = "#{booking.meetup.user.username} has accepted!" %>
+          <% wait_text = "Waiting for #{booking.meetup.user.username} to accept" %>
+          <p><%= booking.accepted? ? accept_text : wait_text %></p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <script>
