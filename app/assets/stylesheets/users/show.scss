@@ -114,18 +114,22 @@
   }
 
   .btn-profile {
-    display: inline-flex; /* Use inline-flex instead of flex */
+    display: inline-flex;
     align-items: center;
     background-color: rgba(148, 187, 233, 1);
     border-color: rgba(148, 187, 233, 1);
     border-radius: 10px;
-    max-width: 100px;
+    padding: 5px 10px; /* Add padding to give some space around the text */
+    white-space: nowrap; /* Prevent text from wrapping to a new line */
+    overflow: hidden; /* Hide any overflowed text */
+    text-overflow: ellipsis; /* Add an ellipsis (...) if the text overflows */
     justify-content: center;
+    margin-top: 3px;
     margin-bottom: 2px;
-    margin-right: 5px; /* Add some right margin for spacing between buttons */
+    margin-right: 5px;
   }
 
   .btn-profile:hover {
-    background-color: rgba(238,174,202,1);
-    border-color: rgba(238,174,202,1);
+    background-color: rgba(238, 174, 202, 1);
+    border-color: rgba(238, 174, 202, 1);
   }
