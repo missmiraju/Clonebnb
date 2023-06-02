@@ -21,6 +21,15 @@
                     input_html: { autocomplete: "new-password" } %>
       </div>
 
+      <% tags = Tag.all %>
+      <% tags.each do |tag| %>
+        <div>
+          <%= check_box_tag tag.title.to_sym, true, resource.tags.include?(tag) %>
+          <p style="display: inline"><%= tag.title %></p>
+        </div>
+      <% end %>
+
+
       <div class="form-actions">
         <%= f.button :submit, "Update" %>
       </div>
