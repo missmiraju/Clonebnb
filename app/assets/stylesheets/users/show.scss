@@ -133,3 +133,139 @@
     background-color: rgba(238, 174, 202, 1);
     border-color: rgba(238, 174, 202, 1);
   }
+
+  // "REQUEST STATUS" STUFF
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px; /* Adjust the spacing between the icon and text */
+  }
+
+  .icon i {
+    font-size: 20px; /* Adjust the size of the icon */
+  }
+  .profile-link {
+    color: rgb(105, 160, 222); /* Set the desired color for the link */
+    text-decoration: none; /* Remove the underline */
+  }
+
+  .profile-link:hover {
+    text-decoration:solid;
+    color: rgba(238, 174, 202, 1);
+  }
+
+  .meetup-status {
+    margin-top: 10px; /* Adjust the margin-top value to add vertical spacing */
+  }
+
+  .meetup-status p {
+    display: flex;
+    align-items: center;
+  }
+
+  .meetup-status .status-text {
+    margin-left: 5px; /* Adjust the margin-left value to add spacing between the icon and text */
+  }
+
+  // SEARCH BAR ATTEMPT:
+  :root {
+    --primary-color: rgba(148, 187, 233, 1);
+    --accent-color: #f50057;
+
+    --text-color: #263238;
+    --body-color: #80deea;
+    --main-font: 'roboto';
+    --font-bold: 700;
+    --font-regular: 400;
+  }
+  * { box-sizing: border-box }
+
+  body {
+    color: var(--text-color);
+    background-color: var(--body-color);
+    font-family: var(--main-font), Arial;
+    font-weight: var(--font-regular);
+  }
+  // main{
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 100vw;
+  //   height: 100vh;
+  // }
+  h1 {
+    font-weight: var(--font-bold)
+  }
+  input,
+  button {
+    border: none;
+    background: none;
+    outline: 0;
+  }
+  button {cursor: pointer}
+  .SearchBox-input::placeholder {/* No es un seudoelemento estandar */
+   color:white;
+    opacity: .6;
+  }
+  /* Chrome, Opera ySafari */
+  .SearchBox-input::-webkit-input-placeholder {
+    color: white;
+  }
+  /* Firefox 19+ */
+  .SearchBox-input::-moz-placeholder {
+    color: white;
+  }
+  /* IE 10+ y Edge */
+  .SearchBox-input:-ms-input-placeholder {
+    color: white;
+  }
+  /* Firefox 18- */
+  #formGroupExampleInput:-moz-placeholder {
+    color: white;
+  }
+
+
+
+  .SearchBox {
+    --height: 4em;
+    display: flex;
+    margin: auto;
+    width: 300px;
+    border-radius: var(--height);
+    background-color: var(--primary-color);
+    height: var(--height);
+  }
+    .SearchBox:hover .SearchBox-input {
+      padding-left: 2em;
+      padding-right: 1em;
+      width: 240px;
+    }
+    .SearchBox-input {
+      width: 0;
+      font-size: 1.2em;
+      color: #fff;
+      transition: .45s;
+    }
+    .SearchBox-button {
+      display: flex;
+      border-radius: 50%;
+      width: var(--height);
+      height: var(--height);
+      background-color: var(--accent-color);
+      transition: .3s;
+    }
+    .SearchBox-button:active  {
+      transform: scale(.85);
+    }
+    .SearchBox-icon {
+      margin: auto;
+      color: #fff;
+    }
+
+    .searchbox-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }

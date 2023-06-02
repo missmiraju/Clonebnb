@@ -28,7 +28,16 @@
             <label>About</label>
             <span class="form-control" placeholder="My Bio"><%= @user.description %></span>
           </div>
-
+          <div class="form-group mb-4">
+            <label>Interest tags</label>
+            <div class="custom-controls-stacked px-2 interest-tags">
+              <% @utags.each do |utag| %>
+                <div class="interest-tag">
+                  <p class="olis-interest-tag" ><%= utag.tag.title %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
           <%# meetups %>
           <% @meetups.each do |meetup| %>
             <div class="meetup-card">
@@ -42,41 +51,36 @@
                 <% bookings = meetup.bookings %>
                 <% if bookings.map { |booking| booking.user }.include?(current_user) %>
                   <%# <%= link_to "Unbook", new_booking_path(meetup), class:"btn btn-profile" %>
-                  <%= link_to "Unbook", booking_path(bookings.find { |booking| booking.user == current_user } ), data: { turbo_method: :delete, confirm: "Are you sure you want to cancel this Booking?" }, class: "btn btn-primary", remote: true %>
+                  <%= link_to "Unbook", booking_path(bookings.find { |booking| booking.user == current_user } ), data: { turbo_method: :delete, confirm: "Are you sure you want to cancel this Booking?" }, class: "btn btn-profile", remote: true %>
                 <% else %>
                   <%= link_to "Book", new_booking_path(meetup), class:"btn btn-profile" %>
                 <% end %>
               <% end %>
             </div>
           <% end %>
-
-          <%# interests %>
-          <div class="form-group mb-4">
-            <label>Interest tags</label>
-            <div class="custom-controls-stacked px-2 interest-tags">
-              <% @utags.each do |utag| %>
-                <div class="interest-tag">
-                  <p class="olis-interest-tag" ><%= utag.tag.title %></p>
-                </div>
-              <% end %>
-            </div>
-          </div>
-
         </form>
       </div>
     </div>
-    <% if @user == current_user %>
-      <%# my booked meetups %>
-      <div>
-        <% @bookings.each do |booking| %>
-          <% if booking.accepted? %>
-            <p><%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> has accepted!</p>
-          <% else %>
-            <p>Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> to accept</p>
-          <% end %>
-        <% end %>
-      </div>
+<% if @user == current_user %>
+  <%# my booked meetups %>
+  <div class="meetup-status">
+    <% @bookings.each do |booking| %>
+      <% if booking.accepted? %>
+        <p>
+          <span class="icon"><i class="fas fa-user-check"></i></span>
+          <%= link_to booking.meetup.user.username, user_path(booking.meetup.user), class: "profile-link" %>
+          <span class="status-text">has accepted your meetup request!</span>
+        </p>
+      <% else %>
+        <p>
+          <span class="icon"><i class="fas fa-user-plus fa-bounce"></i></span>
+          <span class="status-text">Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user), class: "profile-link" %> to accept your request</span>
+        </p>
+      <% end %>
     <% end %>
+  </div>
+<% end %>
+
   </div>
 </div>
 <script>
