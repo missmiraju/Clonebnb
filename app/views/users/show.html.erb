@@ -70,9 +70,9 @@
       <div>
         <% @bookings.each do |booking| %>
           <% if booking.accepted? %>
-            <p><%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> has accepted!</p>
+            <p><%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> has accepted to <%= booking.meetup.title %> together!</p>
           <% else %>
-            <p>Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> to accept</p>
+            <p>Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user) %> to accept to <%= booking.meetup.title %> together</p>
           <% end %>
         <% end %>
       </div>
