@@ -1,15 +1,17 @@
 <div class="banner">
   <h1>Meet your new best friend!</h1>
 
-  <div class="searchbox-container">
-    <div class="SearchBox">
-      <input type="text" class="SearchBox-input" placeholder="Search meetups...">
-      <button class="SearchBox-button">
-        <i class="SearchBox-icon material-icons">search</i>
-      </button>
-    </div>
+<div class="searchbox-container">
+  <div class="search-bar">
+    <%= form_with(url: root_path, method: :get) do |form| %>
+      <%= form.text_field :search, placeholder: "Search meetups..." %>
+      <%= button_tag type: :submit, class: "icon-submit-button" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>
+
 
 
 <div class="cards-container">

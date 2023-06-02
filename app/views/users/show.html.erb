@@ -69,12 +69,12 @@
         <p>
           <span class="icon"><i class="fas fa-user-check"></i></span>
           <%= link_to booking.meetup.user.username, user_path(booking.meetup.user), class: "profile-link" %>
-          <span class="status-text">has accepted your request to <%= booking.meetup.title %> together!</span>
+          <span class="status-text">has accepted your request!</span>
         </p>
       <% else %>
         <p>
           <span class="icon"><i class="fas fa-user-plus fa-bounce"></i></span>
-          <span class="status-text">Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user), class: "profile-link" %> to accept your request  to <%= booking.meetup.title %> together</span>
+          <span class="status-text">Waiting for <%= link_to booking.meetup.user.username, user_path(booking.meetup.user), class: "profile-link" %> to accept your request</span>
         </p>
       <% end %>
     <% end %>
