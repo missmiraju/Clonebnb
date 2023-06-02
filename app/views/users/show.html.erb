@@ -33,10 +33,10 @@
               <h5><%= meetup.title %> on <%= @months[meetup.date.month.to_i - 1] %> <%= meetup.date.day %><%= year %></h5>
               <p><%= meetup.description %></p>
               <% if policy(meetup).edit? %>
-                <%= link_to "Edit", edit_meetup_path(meetup) %>
-                <%= link_to "Display Meetup", meetup_path(meetup) %>
+                <%= link_to "Edit", edit_meetup_path(meetup), class:"btn btn-profile" %>
+                <%= link_to "Display", meetup_path(meetup), class:"btn btn-profile" %>
               <% else %>
-                <%= link_to "Book" %>
+                <%= link_to "Book", class:"btn btn-profile" %>
               <% end %>
             </div>
           <% end %>
